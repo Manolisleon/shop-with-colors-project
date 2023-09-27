@@ -1,0 +1,890 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #000;
+  background-color: #f2f5f5;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.container {
+  width: min(100% - 30px, 1000px);
+  margin: 0 auto;
+}
+
+.shadow {
+  box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.4);
+}
+
+.d-none {
+  display: none;
+}
+
+.btn {
+  background-color: #5448de;
+    padding: 15px;
+    border-radius: 30px;
+    color: #fff;
+    margin-top: 40px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.btn:hover {
+  background-color: #3224da;
+}
+
+a {
+  text-decoration: none;
+  text-transform: none;
+}
+
+.btn a {
+  color: #fff;
+}
+
+/*-------header*/
+
+.logo {
+  position: relative;
+}
+
+.logo h1 a {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.red-line {
+  position: absolute;
+  background-color: red;
+  width: 35px;
+  height: 4px;
+  top: -3px;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+span.line {
+  width: 30px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 6px;
+}
+span.line:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 64px;
+  background: #5448de;
+  color: #000;
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 0 0 0 16px;
+  }
+}
+
+.navbar-overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+body.open .navbar-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar-overlay {
+    display: none;
+  }
+}
+
+.navbar-burger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar-burger {
+    display: none;
+  }
+}
+
+.navbar-title {
+  margin: 0;
+  font-size: 16px;
+}
+
+.navbar-menu {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  translate: -100% 0;
+  width: 270px;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #ccc;
+  visibility: hidden;
+  transition: translate 0.3s;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+}
+
+body.open .navbar-menu {
+  translate: 0 0;
+  visibility: visible;
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar-menu {
+    position: static;
+    translate: 0 0;
+    width: auto;
+    background: transparent;
+    flex-direction: row;
+    visibility: visible;
+  }
+}
+
+.navbar-menu > button a {
+  color: #fff;
+  background: transparent;
+  padding: 0 8px;
+}
+
+.navbar-menu > button.active a {
+  color: inherit;
+}
+
+
+/*---------carousel*/
+
+.carousel {
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.carousel-images img {
+  filter: brightness(50%);
+  width: 100%;
+  aspect-ratio: 16/9;
+  transition: opacity 0.3s ease;
+}
+.carousel-images img.inactive {
+  display: none;
+}
+.inactive {
+  display: none;
+}
+.carousel-images img.active {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+.active {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@media (max-width: 900px) {
+  .carousel-images img {
+    aspect-ratio: 4/3;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .carousel-images img {
+    aspect-ratio: 4/5;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carousel-controls button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-80%);
+  font-size: 22px;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 16px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.left-btn {
+  left: 0;
+}
+.right-btn {
+  right: 0;
+}
+
+.carousel-controls button:hover {
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.carousel-indicator {
+  display: flex;
+  align-self: center;
+  gap: 10px;
+  margin: 16px 0;
+}
+.dot {
+  width: 15px;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+.dot.active {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.images-contents {
+  position: absolute;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+.images-contents h1{
+  -webkit-text-stroke: 0,4px rgba(0, 0, 0, 0.6);
+  font-size: 7vw;
+  color: #fff;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6);
+}
+.images-contents p {
+  -webkit-text-stroke: 0,4px rgba(0, 0, 0, 0.6);
+  font-size: 3vw;
+  margin-top: 50px;
+  color: #fff;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6);
+  margin: 50 auto;
+  max-width: 900px;
+}
+
+/*-----main-----*/
+
+.section-img-left,
+.section-img-right {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 50px;
+  max-width: 1100px;
+  margin: 100px auto;
+}
+
+.paragraph {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+@media (max-width: 590px) {
+  .section-img-left {
+    grid-template-rows: auto auto;
+    grid-template-columns: none;
+  }
+  .section-img-right {
+    display: flex;
+    grid-template-columns: none;
+    flex-direction: column-reverse;
+  }
+}
+
+/*-----Exterior - interior card------*/
+
+.exterior-interior {
+  display: flex;
+  margin: 150px 0;
+  justify-content: space-around;
+}
+
+.cardExterior,
+.cardInterior {
+  background-color: #fff;
+  max-width: 400px;
+  height: 250px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.cardExterior:hover,
+.cardInterior:hover {
+  box-shadow: 0px 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cardExterior p,
+.cardInterior p {
+padding: 10px;
+}
+
+.cardExterior img,
+.cardInterior img {
+  background-size: cover;
+  border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+  .exterior-interior {
+    flex-wrap: wrap;
+  }
+  .cardExterior {
+    margin-bottom: 40px;
+  }
+}
+
+/*------colors*/
+
+.color {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.card-container {
+  display: flex;
+  color: #575556;
+  margin-top: 200px;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  width: 75vw;
+  max-width: 400px;
+  padding: 50px 30px 50px 20px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.4);
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.card img {
+  max-width: 280px;
+  width: 32vw;
+  height: 270px;
+  object-fit: cover;
+  border-radius: inherit;
+  margin: -100px 0 20px 0;
+}
+
+.card h2 {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.card p {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(0 0 0 / 70%);
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+.card .buttons {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.card button {
+  border: 0;
+  background: linear-gradient(90deg, #5448de, #5448de);
+  color: #f8f8f8;
+  font-family: inherit;
+  padding: 16px 26px;
+  font-size: 16px;
+  border-radius: 40px;
+}
+
+.card button a {
+  text-decoration: none;
+  text-transform: none;
+  color: #f8f8f8;
+}
+
+@media (width <= 720px) {
+  .card {
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .card h2 {
+    font-size: 30px;
+  }
+
+  .card img {
+    margin: -100px 0 30px 0;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+
+  .card button {
+    min-width: 160px;
+  }
+}
+
+/*-----tools*/
+
+.tools-container {
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin-top: 60px;
+}
+
+.tools-container img {
+  filter: brightness(50%);
+  width: 100%;
+  aspect-ratio: 20/9;
+  transition: opacity 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .tools-container img {
+    aspect-ratio: 4/3;
+  }
+}
+
+/*------footer*/
+
+section {
+  width: 100%;
+  background: #5448de;
+  padding-top: 60px;
+}
+
+footer.top > .logo {
+  height: 50px;
+  margin: 0 auto 50px;
+}
+
+footer.top > .logo h1 a{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+footer {
+  color: rgb(255 255 255 / 50%);
+}
+
+footer.top {
+  display: grid;
+  border-bottom: 2px solid rgb(255 255 255 / 20%);
+  padding-bottom: 20px;
+}
+
+footer.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column-reverse;
+  gap: 8px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer.top .links {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 30px;
+}
+
+.links-column {
+  display: grid;
+  gap: 10px;
+  text-align: center;
+}
+
+footer h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgb(255 255 255 / 96%);
+}
+
+footer p {
+  margin: 0;
+}
+
+.legal > a {
+  margin: 0 0 0 4px;
+}
+
+.legal,
+.copyright {
+  font-size: 12px;
+}
+
+.legal > span {
+  margin-right: 10px;
+}
+
+footer.top .socials {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 56px;
+}
+
+footer.top .socials > a {
+  font-size: 24px;
+}
+
+.socials-column :is(h2, p) {
+  display: none;
+}
+
+@media (width > 640px) {
+  .links-column {
+    text-align: left;
+  }
+
+  footer.top .links {
+    grid-template-columns: repeat(2, 1fr);
+    margin-right: 50px;
+  }
+
+  footer.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 20px;
+    text-align: left;
+  }
+
+  footer.top > .logo {
+    margin: 0 0 50px;
+  }
+}
+
+@media (width >= 640px) {
+  footer {
+    margin: 0 auto;
+    max-width: 580px;
+    padding: 0;
+  }
+
+  footer.top .links {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  footer.bottom {
+    justify-content: flex-start;
+  }
+
+  .socials-column :is(h2, p) {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  footer.top .socials {
+    justify-content: center;
+  }
+}
+
+/*------monosi------*/
+
+.images-prod {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.images-prod img {
+  padding: 20px;
+}
+
+.info-monosi {
+  text-align: center;
+  padding: 30px;
+}
+
+
+/*-------contact-------*/
+
+.contact {
+  margin-bottom: 30px;
+}
+
+.contact h1 {
+  margin-bottom: 30px;
+}
+.contact h4,
+.contact p,
+.contact a {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+.contact-display {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 80px 0;
+}
+
+.about-us {
+  box-shadow: -8px 0px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+.info-about-us {
+  margin-left: 30px;
+  padding: 10px;
+}
+.info-about-us h1,
+.info-about-us h3 {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 826px) {
+  .about-us {
+    box-shadow: 0px -8px 5px 0px rgba(0, 0, 0, 0.4);
+  }
+}
+
+
+
+/*---div animation*/
+
+.scale-in-hor-left {
+	-webkit-animation: scale-in-hor-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+	        animation: scale-in-hor-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+}
+
+
+/* ----------------------------------------------
+ * Generated by Animista on 2023-9-20 17:27:31
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation scale-in-hor-left
+ * ----------------------------------------
+ */
+ @-webkit-keyframes scale-in-hor-left {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+    opacity: 1;
+  }
+}
+@keyframes scale-in-hor-left {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+    opacity: 1;
+  }
+}
+
+
+
+.scale-in-hor-right {
+	-webkit-animation: scale-in-hor-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+	        animation: scale-in-hor-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2023-9-20 17:31:44
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation scale-in-hor-right
+ * ----------------------------------------
+ */
+ @-webkit-keyframes scale-in-hor-right {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+    opacity: 1;
+  }
+}
+@keyframes scale-in-hor-right {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+    opacity: 1;
+  }
+}
+
+.scale-in-ver-top {
+	-webkit-animation: scale-in-ver-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+	        animation: scale-in-ver-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2023-9-21 12:38:59
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation scale-in-ver-top
+ * ----------------------------------------
+ */
+ @-webkit-keyframes scale-in-ver-top {
+  0% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+    opacity: 1;
+  }
+}
+@keyframes scale-in-ver-top {
+  0% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+    opacity: 1;
+  }
+}
+
