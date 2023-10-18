@@ -10,7 +10,7 @@ const boxVariant = {
 };
 
 const InfoRight = (props) => {
-    const control = useAnimation();
+  const control = useAnimation();
   const [ref, inView] = useInView();
 
   useEffect(() => {

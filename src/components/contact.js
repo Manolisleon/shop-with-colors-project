@@ -5,7 +5,7 @@ import '../css/style.css';
 const Contact = (props) => {
 
     return (
-        <>
+        <div className='cont'>
             <div className='contact-display'>
                 <div className='contact scale-in-ver-top'>
                     <h1>ΕΠΙΚΟΙΝΩΝΙΑ</h1>
@@ -31,7 +31,7 @@ const Contact = (props) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

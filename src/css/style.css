@@ -709,7 +709,7 @@ footer.top .socials > a {
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  margin: 80px 0;
+  margin: 100px 0;
 }
 
 .about-us {
@@ -731,7 +731,19 @@ footer.top .socials > a {
   }
 }
 
+.cont {
+  margin-bottom: 80px;
+}
 
+.video-media video {
+  width: 100%;
+}
+.video-media {
+  display: flex;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
 /*---div animation*/
 
